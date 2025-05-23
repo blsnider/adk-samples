@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Admin Stats{% endblock %}
+{% block content %}
+<h2>Admin Statistics</h2>
+<p>Total Invoices Parsed: {{ total_count }}</p>
+<table>
+<tr><th>Vendor</th><th>Invoice Count</th><th>Total Amount</th></tr>
+{% for row in totals %}
+<tr><td>{{ row.vendor }}</td><td>{{ row.count }}</td><td>{{ row.amount }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

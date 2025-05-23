@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Error{% endblock %}
+{% block content %}
+<h2>An Error Occurred</h2>
+<p>{{ message }}</p>
+<form action="/" method="get">
+    <button type="submit">Return to Upload</button>
+</form>
+{% endblock %}
