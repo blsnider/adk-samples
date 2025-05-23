@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Duplicate Invoice{% endblock %}
+{% block content %}
+<h2>Duplicate Detected</h2>
+<p>The uploaded invoice matches an existing record.</p>
+<h3>Current Invoice</h3>
+<table>
+{% for key, value in invoice.items() %}
+<tr><th>{{ key }}</th><td>{{ value }}</td></tr>
+{% endfor %}
+</table>
+<h3>Existing Records</h3>
+<table>
+<tr>
+{% for key in matches[0].keys() %}<th>{{ key }}</th>{% endfor %}
+</tr>
+{% for row in matches %}
+<tr>{% for val in row.values() %}<td>{{ val }}</td>{% endfor %}</tr>
+{% endfor %}
+</table>
+<form action="/" method="get">
+    <button type="submit">Upload Another PDF</button>
+</form>
+{% endblock %}

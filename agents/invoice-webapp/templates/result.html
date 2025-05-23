@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Results{% endblock %}
+{% block content %}
+<h2>Parsed Results</h2>
+{% if approved %}<p>Upload approved and stored.</p>{% endif %}
+{% for invoice in invoices %}
+<h3>Invoice {{ loop.index }}</h3>
+<p><a href="{{ invoice.view_url }}" target="_blank">View PDF</a></p>
+<table>
+    {% for key, value in invoice.items() %}
+    <tr><th>{{ key }}</th><td>{{ value }}</td></tr>
+    {% endfor %}
+</table>
+{% if invoice.needs_approval %}
+<p>Confidence {{ invoice.document_confidence }} is below 0.8. Please confirm upload.</p>
+<form action="/approve" method="post">
+    <input type="hidden" name="data" value='{{ invoice|tojson }}'>
+    <button type="submit">Approve Upload</button>
+</form>
+{% endif %}
+{% endfor %}
+<form action="/" method="get">
+    <button type="submit">Upload More PDFs</button>
+</form>
+{% endblock %}
