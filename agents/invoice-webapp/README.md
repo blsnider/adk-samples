@@ -9,9 +9,14 @@ This sample demonstrates a simple Flask application for uploading and parsing PD
 - Admin page showing total invoices processed and totals by vendor.
 
 ## Running
-1. From the repository root run `./setup.sh` to create a virtual environment and install dependencies.
+## Running
+
+1. Install dependencies with `pip install flask google-cloud-storage google-cloud-bigquery google-cloud-documentai vertexai`.
 2. Ensure Google credentials are configured and update the configuration values in `app.py`.
-3. Launch the app from this directory:
+3. Run the app:
+   ```bash
+   python app.py
+
 
 ```bash
 python app.py
