@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Results{% endblock %}
+{% block content %}
+<h2>Parsed Results</h2>
+{% for invoice in invoices %}
+<h3>Invoice {{ loop.index }}</h3>
+<table>
+    {% for key, value in invoice.items() %}
+    <tr><th>{{ key }}</th><td>{{ value }}</td></tr>
+    {% endfor %}
+</table>
+{% endfor %}
+<form action="/" method="get">
+    <button type="submit">Upload More PDFs</button>
+</form>
+{% endblock %}

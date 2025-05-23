@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Upload Invoices{% endblock %}
+{% block head %}
+<script>
+function initDragAndDrop() {
+  const area = document.getElementById('upload-area');
+  area.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    area.classList.add('dragover');
+  });
+  area.addEventListener('dragleave', () => {
+    area.classList.remove('dragover');
+  });
+  area.addEventListener('drop', (e) => {
+    e.preventDefault();
+    area.classList.remove('dragover');
+    document.getElementById('file-input').files = e.dataTransfer.files;
+    document.getElementById('upload-form').submit();
+  });
+}
+window.addEventListener('DOMContentLoaded', initDragAndDrop);
+</script>
+{% endblock %}
+{% block content %}
+<h2>Upload PDF Invoices</h2>
+<form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+    <div id="upload-area" class="upload-area">
+        Drag and drop PDFs here or click to select
+        <input id="file-input" type="file" name="files" accept="application/pdf" multiple style="display:none" onchange="document.getElementById('upload-form').submit()">
+    </div>
+</form>
+<script>
+document.getElementById('upload-area').onclick = () => document.getElementById('file-input').click();
+</script>
+{% endblock %}
