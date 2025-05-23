@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Upload Invoices{% endblock %}
+{% block title %}UPLOAD INVOICES{% endblock %}
 {% block head %}
 <script>
 function initDragAndDrop() {
@@ -22,10 +22,10 @@ window.addEventListener('DOMContentLoaded', initDragAndDrop);
 </script>
 {% endblock %}
 {% block content %}
-<h2>Upload PDF Invoices</h2>
+<h2>UPLOAD PDF INVOICES</h2>
 <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
     <div id="upload-area" class="upload-area">
-        Drag and drop PDFs here or click to select
+        DRAG AND DROP PDFs HERE OR CLICK TO SELECT
         <input id="file-input" type="file" name="files" accept="application/pdf" multiple style="display:none" onchange="document.getElementById('upload-form').submit()">
     </div>
 </form>
